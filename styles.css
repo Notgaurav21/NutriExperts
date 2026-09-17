@@ -125,9 +125,11 @@ header.site {
   position: sticky;
   top: 0;
   z-index: 40;
+  padding: 5px 30px;
 }
 
 .nav {
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -142,6 +144,7 @@ header.site {
   font-weight: 700;
   color: var(--forest-deep);
   text-decoration: none;
+  object-fit: contain;
 }
 .logo span { color: var(--paprika); }
 
@@ -343,7 +346,7 @@ section.tight { padding: 64px 0; }
   .two-col { grid-template-columns: 1fr; gap: 40px; }
 }
 
-/* ---------- Program menu list (not SaaS cards) ---------- */
+/* ---------- Program menu list (not SaaS cards) — used on homepage preview ---------- */
 
 .menu-list { margin-top: 40px; }
 .menu-item {
@@ -387,6 +390,103 @@ section.tight { padding: 64px 0; }
 @media (max-width: 700px) {
   .menu-item { grid-template-columns: 1fr; gap: 10px; }
   .menu-item .mi-price { text-align: left; }
+}
+
+/* ---------- Program pricing cards with "Start Now" CTA — Programs page only ---------- */
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 44px;
+}
+.plan-card {
+  background: var(--paper);
+  padding: 36px 34px;
+  display: flex;
+  flex-direction: column;
+}
+.plan-card.featured { background: var(--white); }
+.plan-card .pc-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.plan-card .pc-idx {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--paprika);
+}
+.plan-card .pc-tag {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--forest);
+  border: 1px solid var(--forest-soft);
+  border-radius: 20px;
+  padding: 4px 12px;
+  white-space: nowrap;
+}
+.plan-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+.plan-card p.pc-desc { color: var(--ink-soft); font-size: 0.94rem; margin: 0; }
+.plan-card .pc-divider { border: none; border-top: 1px solid var(--line); margin: 24px 0; }
+.plan-card .pc-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+.plan-card .pc-price {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  color: var(--forest-deep);
+  line-height: 1.15;
+}
+.plan-card .pc-price .per { font-family: var(--sans); font-size: 0.78rem; font-weight: 400; color: var(--ink-soft); }
+.plan-card .pc-save { font-family: var(--sans); font-size: 0.8rem; color: var(--forest); font-weight: 600; margin-top: 4px; }
+
+.btn-sm { padding: 10px 22px; font-size: 0.88rem; white-space: nowrap; }
+
+@media (max-width: 860px) {
+  .plan-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .plan-card .pc-bottom { align-items: flex-start; flex-direction: column; }
+  .plan-card .pc-bottom .btn { width: 100%; justify-content: center; }
+}
+
+/* ---------- "What every plan includes" checklist — Programs page only ---------- */
+
+.includes-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 40px;
+  margin-top: 36px;
+}
+.includes-list .inc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.includes-list .inc-item .check {
+  color: var(--forest);
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+.includes-list .inc-item p { margin: 0; font-size: 0.95rem; color: var(--ink); }
+.includes-list .inc-item.no .check { color: var(--paprika); }
+
+@media (max-width: 700px) {
+  .includes-list { grid-template-columns: 1fr; }
 }
 
 /* ---------- Quote / testimonial strip ---------- */
@@ -571,3 +671,263 @@ section.tight { padding: 64px 0; }
   padding-top: 20px;
   margin-top: 40px;
 }
+
+/* ---------- Added: Why-cards grid ---------- */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 44px;
+}
+.why-card {
+  background: var(--paper);
+  padding: 32px 28px;
+}
+.why-card .mark {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--paprika);
+  margin-bottom: 14px;
+  display: block;
+}
+.why-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.why-card p { font-size: 0.92rem; color: var(--ink-soft); margin: 0; }
+@media (max-width: 860px) { .why-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Added: no-meds banner ---------- */
+.pledge-bar {
+  background: var(--forest-deep);
+  color: var(--white);
+  padding: 18px 0;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.pledge-bar span { color: var(--marigold); }
+
+/* ---------- Added: Myth vs fact ---------- */
+.myth-grid { margin-top: 44px; display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.myth-row { background: var(--paper); display: grid; grid-template-columns: 1fr 1fr; }
+.myth-row > div { padding: 22px 26px; }
+.myth-row .myth { border-right: 1px solid var(--line); }
+.myth-row .myth p { margin: 0; color: var(--ink-soft); }
+.myth-row .fact p { margin: 0; color: var(--forest-deep); font-weight: 500; }
+.myth-tag { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.02em; display: block; margin-bottom: 6px; }
+.myth-row .myth .myth-tag { color: #a34a2b; }
+.myth-row .fact .myth-tag { color: var(--forest); }
+@media (max-width: 700px) {
+  .myth-row { grid-template-columns: 1fr; }
+  .myth-row .myth { border-right: none; border-bottom: 1px solid var(--line); }
+}
+
+/* ---------- Added: FAQ ---------- */
+.faq-list { margin-top: 40px; }
+.faq-item { border-top: 1px solid var(--line); padding: 22px 0; }
+.faq-item:last-child { border-bottom: 1px solid var(--line); }
+.faq-item summary { cursor: pointer; font-family: var(--serif); font-size: 1.1rem; color: var(--forest-deep); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; font-family: var(--sans); font-size: 1.4rem; color: var(--paprika); flex-shrink: 0; }
+.faq-item[open] summary::after { content: "–"; }
+.faq-item p { margin: 14px 0 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+/* ---------- Added: comparison table ---------- */
+.compare-table { width: 100%; border-collapse: collapse; margin-top: 40px; font-size: 0.95rem; }
+.compare-table th, .compare-table td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.compare-table th { font-family: var(--sans); font-size: 0.82rem; color: var(--ink-soft); font-weight: 600; }
+.compare-table td.yes { color: var(--forest); font-weight: 600; }
+
+/* ---------- Added: WhatsApp floating button ---------- */
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 60;
+  background: #25D366;
+  color: #fff;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  font-size: 1.6rem;
+}
+.wa-float:hover { transform: scale(1.06); }
+
+.badge-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+.badge-pill {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--forest-deep);
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  padding: 7px 16px;
+  border-radius: 20px;
+}
+
+/* ---------- Added: lead capture in calculator ---------- */
+.lead-capture {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px dashed var(--line);
+}
+.lead-capture p.hint { font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 14px; }
+
+/* ---------- Added: placeholder boxes for real photos/QR (see HTML comments) ---------- */
+.placeholder-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--ivory);
+  border: 1.5px dashed var(--line);
+  border-radius: 4px;
+  color: var(--ink-soft);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.placeholder-box .ph-icon { font-size: 2rem; line-height: 1; }
+.placeholder-box .ph-label { font-weight: 600; color: var(--forest-deep); word-break: break-all; }
+.placeholder-box .ph-sub { font-size: 0.72rem; color: var(--ink-soft); }
+
+.dietitian-photo-wrap { aspect-ratio: 4/5; width: 100%; border-radius: 3px; overflow: hidden; }
+.dietitian-photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 44px;
+}
+.food-item { aspect-ratio: 4/3; border-radius: 3px; overflow: hidden; }
+.food-item img { width: 100%; height: 100%; object-fit: cover; }
+.food-caption { margin-top: 10px; font-size: 0.88rem; color: var(--ink-soft); text-align: center; }
+@media (max-width: 760px) { .food-grid { grid-template-columns: 1fr; } }
+
+.qr-wrap { width: 180px; aspect-ratio: 1/1; border-radius: 3px; overflow: hidden; margin: 0 auto; }
+.qr-wrap img { width: 100%; height: 100%; object-fit: contain; background: var(--white); }
+.qr-block { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+.qr-upi-id { font-family: var(--sans); font-weight: 600; color: var(--forest-deep); font-size: 0.95rem; }
+
+/* ---------- Added: nav logo image (replaces the former text wordmark) ---------- */
+.logo { display: flex; align-items: center; }
+.logo-img {
+  height: 42px;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
+  display: block;
+}
+.placeholder-box.ph-logo {
+  flex-direction: row;
+  height: 42px;
+  width: auto;
+  min-width: 150px;
+  padding: 0 16px;
+  gap: 8px;
+  border-radius: 4px;
+  font-size: 0.74rem;
+}
+.placeholder-box.ph-logo .ph-icon { font-size: 1.1rem; }
+.placeholder-box.ph-logo .ph-sub { display: none; }
+
+@media (max-width: 760px) {
+  .logo-img { height: 34px; max-width: 150px; }
+  .placeholder-box.ph-logo { height: 34px; min-width: 130px; font-size: 0.68rem; }
+}
+
+/* ============================================================
+   Animations — kept deliberately restrained: one hero sequence
+   on load, a single scroll-reveal treatment reused site-wide,
+   and a few small interactive touches. All respect users who
+   prefer reduced motion.
+   ============================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* Hero load-in: headline, copy, buttons, plate stagger in once */
+  .hero-copy .kicker,
+  .hero-copy h1,
+  .hero-copy .lede,
+  .hero-copy .btn-row,
+  .hero-copy .badge-row,
+  .hero .plate {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+  .hero-copy .kicker    { animation-delay: 0.05s; }
+  .hero-copy h1          { animation-delay: 0.15s; }
+  .hero-copy .lede        { animation-delay: 0.28s; }
+  .hero-copy .btn-row      { animation-delay: 0.4s; }
+  .hero-copy .badge-row     { animation-delay: 0.5s; }
+  .hero .plate               { animation: fadeIn 0.9s ease forwards; animation-delay: 0.25s; }
+
+  /* Scroll reveal: one fade-up treatment, reused consistently */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.in-view { opacity: 1; transform: none; }
+
+  /* Gentle stagger for grouped items sharing a .reveal-group parent */
+  .reveal-group .reveal:nth-child(1) { transition-delay: 0s; }
+  .reveal-group .reveal:nth-child(2) { transition-delay: 0.08s; }
+  .reveal-group .reveal:nth-child(3) { transition-delay: 0.16s; }
+  .reveal-group .reveal:nth-child(4) { transition-delay: 0.24s; }
+  .reveal-group .reveal:nth-child(5) { transition-delay: 0.32s; }
+  .reveal-group .reveal:nth-child(6) { transition-delay: 0.4s; }
+
+  /* WhatsApp button: a few gentle pulses to draw the eye, then it settles */
+  .wa-float { animation: waPulse 2.2s ease-in-out 3; }
+
+  /* Calculator result: soft reveal instead of an instant snap */
+  .calc-result {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+  .calc-result.show { opacity: 1; transform: none; }
+
+  /* FAQ marker rotates instead of the browser's instant swap */
+  .faq-item summary::after { transition: transform 0.25s ease; display: inline-block; }
+  .faq-item[open] summary::after { transform: rotate(180deg); }
+
+  .btn { transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease; }
+  .btn:hover { transform: translateY(-1px); }
+
+  .menu-item { transition: background 0.2s ease; }
+  .menu-item:hover { background: var(--ivory); }
+
+  .why-card, .expert, .food-item, .stat { transition: background 0.2s ease; }
+  .why-card:hover { background: var(--white); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes waPulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.07); }
+}
+
+/* calc-result must still show even for reduced-motion / no-JS users */
+.calc-result.show { display: block; }

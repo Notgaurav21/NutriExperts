@@ -5,17 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — NutriExperts</title>
 <link rel="stylesheet" href="styles.css">
+<script src="script.js"></script>
 </head>
 <body>
 
 <header class="site">
   <nav class="nav">
-    <a href="index.html" class="logo">Nutri<span>Experts</span></a>
+  
+    <a href="index.html" class="logo">
+      <img src="assets/logo.png" alt="Nutriexperts Logo" class="logo-img"
+           data-label="assets/logo.png" data-icon="🥗" data-size="logo"
+           onerror="imgFallback(this)">
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="programs.html">Programs</a></li>
       <li><a href="calculator.html">Free Tools</a></li>
-      <li><a href="experts.html">Our Experts</a></li>
       <li><a href="contact.html" class="active">Contact</a></li>
     </ul>
     <div class="nav-cta">
@@ -24,11 +29,13 @@
   </nav>
 </header>
 
+<div class="pledge-bar">No medicine. <span>No supplements.</span> Just food that works for you.</div>
+
 <section class="tight" style="padding-top:64px;">
   <div class="wrap">
     <p class="kicker">Get started</p>
     <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem);">Book your free first consultation.</h1>
-    <p class="lede">Tell us a little about yourself and we'll match you with a dietitian within one business day. No commitment required.</p>
+    <p class="lede">Tell us a little about yourself and when you're free to talk — we're available 24×7 and will reach out to confirm your slot.</p>
   </div>
 </section>
 
@@ -36,7 +43,7 @@
   <div class="wrap">
     <div class="two-col">
       <div>
-        <form class="contact-form" onsubmit="handleSubmit(event)">
+        <form class="contact-form reveal" onsubmit="handleSubmit(event)">
           <div class="field-row">
             <div class="field">
               <label for="name">Full name</label>
@@ -56,14 +63,21 @@
               <label for="interest">I'm interested in</label>
               <select id="interest">
                 <option>Weight Management</option>
-                <option>Diabetes &amp; PCOS Care</option>
+                <option>Diabetes, Thyroid, Gut &amp; PCOD Care</option>
                 <option>Sports Nutrition</option>
-                <option>Prenatal &amp; Postpartum</option>
-                <option>Muscle Gain</option>
-                <option>General Wellness</option>
-                <option>Corporate Wellness</option>
+                <option>Conceiving &amp; Postpartum</option>
                 <option>Not sure yet</option>
               </select>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="pref-date">Preferred date to talk</label>
+              <input type="date" id="pref-date">
+            </div>
+            <div class="field">
+              <label for="pref-time">Preferred time</label>
+              <input type="time" id="pref-time">
             </div>
           </div>
           <div class="field">
@@ -71,21 +85,32 @@
             <textarea id="message" placeholder="E.g. I want to lose weight before my sister's wedding in March, and I travel for work a lot."></textarea>
           </div>
           <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:8px;">Request my consultation</button>
-          <p id="confirm-msg" style="display:none; margin: 16px 0 0; color: var(--forest-deep); font-weight:600; font-size:0.92rem;">Thanks — a dietitian will reach out within one business day.</p>
+          <p id="confirm-msg" style="display:none; margin: 16px 0 0; color: var(--forest-deep); font-weight:600; font-size:0.92rem;">Thanks — we'll reach out to confirm your slot. We're available 24×7.</p>
         </form>
       </div>
 
       <div>
-        <ul class="info-list" style="margin-top:0;">
-          <li><strong>Phone</strong>+91 80 4567 1234 — Mon–Sat, 9am–7pm IST</li>
-          <li><strong>Email</strong>hello@nutriexperts.example</li>
-          <li><strong>Offices</strong>Bengaluru · Mumbai · Delhi NCR (video consultations available everywhere)</li>
-          <li><strong>Corporate wellness</strong>corporate@nutriexperts.example</li>
+      
+        <ul class="info-list reveal" style="margin-top:0;">
+          
+          <li><strong>Phone (primary)</strong><a href="tel:+919122770481" style="color:inherit; text-decoration:none;">+919122770481</a></li>
+          
+          <li><strong>Phone (Arpana)</strong><a href="tel:+917283077204" style="color:inherit; text-decoration:none;">+917283077204</a></li>
+          
+          <li><strong>WhatsApp</strong><a href="https://wa.me/919122770481" style="color:var(--forest); text-decoration:underline;">Chat with us on WhatsApp</a></li>
+          
+          <li><strong>Email</strong><a href="mailto:hello@nutriexperts.example" style="color:inherit; text-decoration:none;">hello@nutriexperts.example</a></li>
+          
+          <li><strong>Address</strong>[Clinic / office address — or remove this line if online-only]</li>
+          <li><strong>Support</strong>Available 24×7 — reach out anytime</li>
         </ul>
 
         <div class="callout" style="margin-top:32px;">
-          <p style="margin:0;">Already a client? Message your dietitian directly through your existing plan portal rather than this form for the fastest response.</p>
+          <p style="margin:0;">No medicine, no supplements — every consultation is about food, habits, and a plan built around your life.</p>
         </div>
+
+        
+        <p style="margin-top:24px; font-size:0.9rem;"><a href="programs.html" style="color:var(--forest); text-decoration:underline;">View pricing &amp; pay via UPI →</a></p>
       </div>
     </div>
   </div>
@@ -95,18 +120,16 @@
   <div class="wrap">
     <div>
       <h4 style="font-family: var(--serif); font-size:1.3rem; color:var(--white);">NutriExperts</h4>
-      <p style="color:#b9c4b2; font-size:0.9rem; max-width:32ch;">Nutrition guidance from certified dietitians — built around your life, not a template.</p>
+      <p style="color:#b9c4b2; font-size:0.9rem; max-width:32ch;">Nutrition guidance from a dedicated dietitian — no medicine, no supplements, just food that works for you.</p>
     </div>
     <div>
       <h4>Explore</h4>
       <a href="programs.html">Programs</a>
       <a href="calculator.html">Free tools</a>
-      <a href="experts.html">Our experts</a>
     </div>
     <div>
       <h4>Company</h4>
       <a href="contact.html">Contact</a>
-      <a href="contact.html">Corporate wellness</a>
     </div>
     <div>
       <h4>Get started</h4>
@@ -116,6 +139,8 @@
   </div>
   <div class="foot-bottom">© 2026 NutriExperts. Nutrition guidance provided does not replace medical advice.</div>
 </footer>
+
+<a href="https://wa.me/919122770481?text=Hi%20NutriExperts%2C%20I%27d%20like%20to%20book%20a%20consultation" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
 
 <script>
 function handleSubmit(e) {

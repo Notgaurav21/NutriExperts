@@ -5,17 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Programs — NutriExperts</title>
 <link rel="stylesheet" href="styles.css">
+<script src="script.js"></script>
 </head>
 <body>
 
 <header class="site">
   <nav class="nav">
-    <a href="index.html" class="logo">Nutri<span>Experts</span></a>
+    
+    <a href="index.html" class="logo">
+      <img src="assets/logo.png" alt="Nutriexperts Logo" class="logo-img"
+           data-label="assets/logo.png" data-icon="🥗" data-size="logo"
+           onerror="imgFallback(this)">
+    </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="programs.html" class="active">Programs</a></li>
       <li><a href="calculator.html">Free Tools</a></li>
-      <li><a href="experts.html">Our Experts</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-cta">
@@ -24,102 +29,132 @@
   </nav>
 </header>
 
+<div class="pledge-bar">No medicine. <span>No supplements.</span> Just food that works for you.</div>
+
 <section class="tight" style="padding-top:64px;">
   <div class="wrap">
     <p class="kicker">Programs &amp; pricing</p>
     <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem);">Choose the plan that matches your goal.</h1>
-    <p class="lede">Every program includes a dedicated dietitian, a custom meal plan, and weekly check-ins. Prices shown are per month; most clients start with a 3-month commitment.</p>
+    <p class="lede">Every program includes a dedicated dietitian, a custom meal plan, and regular follow-ups — no medicine or supplements involved.</p>
   </div>
 </section>
 
 <section class="tight">
   <div class="wrap">
-    <div class="menu-list">
+    <div class="plan-grid reveal-group">
 
-      <div class="menu-item">
-        <div></div>
-        <div class="mi-name">
-          <h3>Weight Management</h3>
-          <p>A calorie- and habit-based plan for sustainable loss — built around food you already buy and cook.</p>
+      <div class="plan-card featured reveal">
+        <div class="pc-top">
+          <span class="pc-idx">01</span>
+          <span class="pc-tag">Most popular</span>
         </div>
-        <div class="mi-tag">Most popular</div>
-        <div class="mi-price">₹2,999<small>per month</small></div>
+        <h3>Weight Management</h3>
+        <p class="pc-desc">A calorie- and habit-based plan for sustainable loss — built around food you already buy and cook.</p>
+        <hr class="pc-divider">
+        <div class="pc-bottom">
+          <div>
+            <div class="pc-price">₹2,500 <span class="per">/ month</span></div>
+            <div class="pc-save">or ₹7,000 for 3 months — save ₹500</div>
+          </div>
+          <a href="contact.html" class="btn btn-marigold btn-sm">Start Now</a>
+        </div>
       </div>
 
-      <div class="menu-item">
-        <div></div>
-        <div class="mi-name">
-          <h3>Diabetes &amp; PCOS Care</h3>
-          <p>Blood-sugar-aware meal planning coordinated with your existing labs and medication.</p>
+      <div class="plan-card reveal">
+        <div class="pc-top">
+          <span class="pc-idx">02</span>
+          <span class="pc-tag">Clinical support</span>
         </div>
-        <div class="mi-tag">Clinical</div>
-        <div class="mi-price">₹3,999<small>per month</small></div>
+        <h3>Diabetes, Thyroid, Gut &amp; PCOD Care</h3>
+        <p class="pc-desc">Condition-aware meal planning that works alongside your doctor's treatment — not instead of it.</p>
+        <hr class="pc-divider">
+        <div class="pc-bottom">
+          <div>
+            <div class="pc-price">₹2,800 <span class="per">/ month</span></div>
+            <div class="pc-save">or ₹8,000 for 3 months — save ₹400</div>
+          </div>
+          <a href="contact.html" class="btn btn-marigold btn-sm">Start Now</a>
+        </div>
       </div>
 
-      <div class="menu-item">
-        <div></div>
-        <div class="mi-name">
-          <h3>Sports Nutrition</h3>
-          <p>Fueling, hydration, and recovery plans tuned to your training calendar.</p>
+      <div class="plan-card reveal">
+        <div class="pc-top">
+          <span class="pc-idx">03</span>
+          <span class="pc-tag">Performance</span>
         </div>
-        <div class="mi-tag">Performance</div>
-        <div class="mi-price">₹3,499<small>per month</small></div>
+        <h3>Sports Nutrition</h3>
+        <p class="pc-desc">Fueling, hydration, and recovery plans tuned to your training calendar.</p>
+        <hr class="pc-divider">
+        <div class="pc-bottom">
+          <div>
+            <div class="pc-price">₹3,000 <span class="per">/ month</span></div>
+            <div class="pc-save">or ₹8,500 for 3 months — save ₹500</div>
+          </div>
+          <a href="contact.html" class="btn btn-marigold btn-sm">Start Now</a>
+        </div>
       </div>
 
-      <div class="menu-item">
-        <div></div>
-        <div class="mi-name">
-          <h3>Prenatal &amp; Postpartum</h3>
-          <p>Nutrient-focused plans for pregnancy and recovery, coordinated with your OB.</p>
+      <div class="plan-card reveal">
+        <div class="pc-top">
+          <span class="pc-idx">04</span>
+          <span class="pc-tag">100 days</span>
         </div>
-        <div class="mi-tag">Clinical</div>
-        <div class="mi-price">₹3,999<small>per month</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div></div>
-        <div class="mi-name">
-          <h3>Muscle Gain</h3>
-          <p>Structured surplus and protein targets for lean mass gain, with training-day adjustments.</p>
+        <h3>Conceiving &amp; Postpartum</h3>
+        <p class="pc-desc">A 100-day nutrient-focused plan for pregnancy planning or recovery after birth, coordinated with your OB.</p>
+        <hr class="pc-divider">
+        <div class="pc-bottom">
+          <div>
+            <div class="pc-price">₹12,000 <span class="per">/ 100 days</span></div>
+          </div>
+          <a href="contact.html" class="btn btn-marigold btn-sm">Start Now</a>
         </div>
-        <div class="mi-tag">Performance</div>
-        <div class="mi-price">₹2,999<small>per month</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div></div>
-        <div class="mi-name">
-          <h3>General Wellness</h3>
-          <p>A lighter-touch program for anyone who wants better habits without a specific condition to manage.</p>
-        </div>
-        <div class="mi-tag">Flexible</div>
-        <div class="mi-price">₹1,999<small>per month</small></div>
       </div>
 
     </div>
 
-    <p class="disclaimer">Clinical programs (Diabetes &amp; PCOS Care, Prenatal &amp; Postpartum) are designed to complement — not replace — care from your physician. Share your program plan with your doctor before making changes to medication or treatment.</p>
+    <p class="disclaimer">Clinical programs (Diabetes, Thyroid, Gut &amp; PCOD Care and Conceiving &amp; Postpartum) are designed to complement — not replace — care from your physician. No medicine or supplements are prescribed; please continue any treatment your doctor has advised.</p>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap">
+    <p class="kicker">Every plan includes</p>
+    <h2 style="font-size:1.8rem;">What you're actually getting.</h2>
+    <div class="includes-list reveal-group">
+      <div class="inc-item reveal"><span class="check">✓</span><p>Personalized diet plan built around your routine</p></div>
+      <div class="inc-item reveal"><span class="check">✓</span><p>Regular follow-ups with your dietitian</p></div>
+      <div class="inc-item reveal"><span class="check">✓</span><p>Progress monitoring &amp; plan changes as you go</p></div>
+      <div class="inc-item reveal"><span class="check">✓</span><p>Food substitutions &amp; Indian-meal guidance</p></div>
+      <div class="inc-item reveal"><span class="check">✓</span><p>24×7 support — reach out anytime</p></div>
+      <div class="inc-item no reveal"><span class="check">✕</span><p>No medicine or supplements — ever</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap">
+    <p class="kicker">Payment</p>
+    <h2 style="font-size:1.8rem;">Pay via UPI</h2>
+    <p class="lede" style="margin-top:12px;">Scan the code below with any UPI app, or use the ID directly. Please message us after paying so we can confirm and get you started.</p>
+    <div class="qr-block reveal" style="margin-top:32px;">
+      <div class="qr-wrap">
+        <img src="assets/qr2.jpeg" alt="UPI QR code" data-label="assets/upi-qr.png" data-icon="📱" data-sub="Add your UPI QR code" onerror="imgFallback(this)">
+      </div>
+     
+      <p class="qr-upi-id">7209391717@axl</p>
+    </div>
   </div>
 </section>
 
 <section class="quote-strip">
   <div class="wrap two-col" style="align-items:center;">
     <div>
-      <h2 style="color:var(--white); font-size: clamp(1.7rem,3vw,2.3rem);">Not sure which program fits?</h2>
-      <p style="color:#cfe0c9; margin-top:12px;">Take the 2-minute quiz and we'll match you with a dietitian and program based on your goals and health history.</p>
+      <h2 style="color:var(--white); font-size: clamp(1.7rem,3vw,2.3rem);">Still deciding between programs?</h2>
+      <p style="color:#cfe0c9; margin-top:12px;">A quick call is the fastest way to find out — no pressure, no commitment, just a straight answer on what would actually help.</p>
     </div>
     <div>
-      <a href="contact.html" class="btn btn-marigold">Take the free quiz</a>
+      <a href="contact.html" class="btn btn-marigold">Talk it through — free</a>
     </div>
-  </div>
-</section>
-
-<section class="tight">
-  <div class="wrap">
-    <p class="kicker">For companies</p>
-    <h2>Corporate Wellness</h2>
-    <p class="lede" style="margin-top:16px;">Group workshops, on-site screening days, and 1:1 coaching for teams of any size. Pricing is per employee, per month, and scales down with headcount.</p>
-    <a href="contact.html" class="btn btn-ghost" style="margin-top:8px;">Request a quote</a>
   </div>
 </section>
 
@@ -127,18 +162,16 @@
   <div class="wrap">
     <div>
       <h4 style="font-family: var(--serif); font-size:1.3rem; color:var(--white);">NutriExperts</h4>
-      <p style="color:#b9c4b2; font-size:0.9rem; max-width:32ch;">Nutrition guidance from certified dietitians — built around your life, not a template.</p>
+      <p style="color:#b9c4b2; font-size:0.9rem; max-width:32ch;">Nutrition guidance from a dedicated dietitian — no medicine, no supplements, just food that works for you.</p>
     </div>
     <div>
       <h4>Explore</h4>
       <a href="programs.html">Programs</a>
       <a href="calculator.html">Free tools</a>
-      <a href="experts.html">Our experts</a>
     </div>
     <div>
       <h4>Company</h4>
       <a href="contact.html">Contact</a>
-      <a href="contact.html">Corporate wellness</a>
     </div>
     <div>
       <h4>Get started</h4>
@@ -148,6 +181,8 @@
   </div>
   <div class="foot-bottom">© 2026 NutriExperts. Nutrition guidance provided does not replace medical advice.</div>
 </footer>
+
+<a href="https://wa.me/919122770481?text=Hi%20NutriExperts%2C%20I%27d%20like%20to%20know%20more%20about%20a%20program" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
 
 </body>
 </html>
