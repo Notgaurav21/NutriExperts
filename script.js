@@ -82,3 +82,14 @@ function animateCount(el) {
   }
   requestAnimationFrame(frame);
 }
+
+/*
+  Opens WhatsApp in a new tab with a pre-filled message. Used by both the
+  calculator's "Send my results on WhatsApp" button and the contact page's
+  "Send via WhatsApp" button, so a lead's details land straight in your
+  WhatsApp inbox instead of needing a backend to store form submissions.
+*/
+function openWhatsApp(number, message) {
+  const url = 'https://wa.me/' + number + '?text=' + encodeURIComponent(message);
+  window.open(url, '_blank');
+}

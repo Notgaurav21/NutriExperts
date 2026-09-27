@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Calorie &amp; BMI Calculator — NutriExperts</title>
+<title>Free Calorie &amp; BMI Calculator | NutriExperts</title>
 <link rel="stylesheet" href="styles.css">
 <script src="script.js"></script>
 </head>
@@ -14,7 +14,7 @@
     <!--
       LOGO: Add your logo file named "logo.png" inside the "images" folder
       next to this file (path: images/logo.png). Use a PNG with a
-      transparent background — a wide/horizontal logo (roughly 3:1 to 4:1,
+      transparent background, a wide/horizontal logo (roughly 3:1 to 4:1,
       e.g. 480x140px) will fit this header spot most naturally, though any
       shape will scale to fit since sizing is handled by CSS (.logo-img),
       not by editing the image file itself. Until it's added, a small
@@ -43,7 +43,7 @@
   <div class="wrap">
     <p class="kicker">Free tool</p>
     <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem);">What does your body actually need?</h1>
-    <p class="lede">Enter your details for an estimate of your daily calorie needs, BMI, and a starting macro split. This is a starting point — your dietitian will refine it around your goals.</p>
+    <p class="lede">Enter your details for an estimate of your daily calorie needs, BMI, and a starting macro split. This is a starting point. Your dietitian will refine it around your goals.</p>
   </div>
 </section>
 
@@ -86,11 +86,11 @@
             <div class="field">
               <label for="activity">Activity level</label>
               <select id="activity">
-                <option value="1.2">Sedentary — little to no exercise</option>
-                <option value="1.375" selected>Light — exercise 1–3 days/week</option>
-                <option value="1.55">Moderate — exercise 3–5 days/week</option>
-                <option value="1.725">Active — exercise 6–7 days/week</option>
-                <option value="1.9">Very active — physical job or 2x/day training</option>
+                <option value="1.2">Sedentary (little to no exercise)</option>
+                <option value="1.375" selected>Light (exercise 1–3 days/week)</option>
+                <option value="1.55">Moderate (exercise 3–5 days/week)</option>
+                <option value="1.725">Active (exercise 6–7 days/week)</option>
+                <option value="1.9">Very active (physical job or 2x/day training)</option>
               </select>
             </div>
           </div>
@@ -111,7 +111,7 @@
           <div class="calc-result" id="result">
             <span class="big" id="calorie-out">0</span>
             <span style="font-family: var(--sans); color: var(--ink-soft); font-size:0.95rem;">calories / day</span>
-            <span class="cat" id="bmi-cat">BMI —</span>
+            <span class="cat" id="bmi-cat">BMI</span>
 
             <div class="macro-row">
               <div class="macro"><div class="amt" id="protein-out">0g</div><div class="lbl">Protein</div></div>
@@ -141,7 +141,7 @@
       <div>
         <p class="kicker">Why this isn't the full picture</p>
         <h2 style="font-size:1.8rem;">A calculator gives you a number. A dietitian gives you a plan.</h2>
-        <p class="lede" style="margin-top:16px;">This estimate uses the Mifflin-St Jeor equation, the same starting formula our dietitian uses — but it doesn't know your medical history, food preferences, or what's realistic for your week.</p>
+        <p class="lede" style="margin-top:16px;">This estimate uses the Mifflin-St Jeor equation, the same starting formula our dietitian uses. It doesn't know your medical history, food preferences, or what's realistic for your week though.</p>
         <div class="callout" style="margin-top:24px;">
           <p style="margin:0;">If you have diabetes, PCOD/PCOS, thyroid concerns, or are pregnant or breastfeeding, these numbers can be significantly off. Talk to a dietitian before using them to guide meal planning. No medicine or supplements are ever part of the plan.</p>
         </div>
@@ -155,7 +155,7 @@
   <div class="wrap">
     <div>
       <h4 style="font-family: var(--serif); font-size:1.3rem; color:var(--white);">NutriExperts</h4>
-      <p style="color:#b9c4b2; font-size:0.9rem; max-width:32ch;">Nutrition guidance from a dedicated dietitian — no medicine, no supplements, just food that works for you.</p>
+      <p style="color:#b9c4b2; font-size:0.9rem; max-width:32ch;">Nutrition guidance from a dedicated dietitian. No medicine, no supplements, just food that works for you.</p>
     </div>
     <div>
       <h4>Explore</h4>
@@ -194,9 +194,12 @@ function setUnit(u) {
 function calculate() {
   const age = parseFloat(document.getElementById('age').value);
   const sex = document.getElementById('sex').value;
-  let height = parseFloat(document.getElementById('height').value);
-  let weight = parseFloat(document.getElementById('weight').value);
+  const heightEntered = parseFloat(document.getElementById('height').value);
+  const weightEntered = parseFloat(document.getElementById('weight').value);
+  let height = heightEntered;
+  let weight = weightEntered;
   const activity = parseFloat(document.getElementById('activity').value);
+  const activityLabel = document.getElementById('activity').selectedOptions[0].textContent;
   const goal = document.getElementById('goal').value;
 
   if (!age || !height || !weight) {
@@ -240,7 +243,13 @@ function calculate() {
 
   document.getElementById('result').classList.add('show');
 
-  lastResult = { tdee, bmiRounded, bmiCategory, protein, carbs, fat, age, sex, goal };
+  lastResult = {
+    tdee, bmiRounded, bmiCategory, protein, carbs, fat, age, sex, goal,
+    heightEntered, weightEntered,
+    heightUnit: unit === 'metric' ? 'cm' : 'in',
+    weightUnit: unit === 'metric' ? 'kg' : 'lb',
+    activityLabel
+  };
 }
 
 function sendToWhatsApp(e) {
@@ -249,9 +258,18 @@ function sendToWhatsApp(e) {
   const name = document.getElementById('lead-name').value || 'Not provided';
   const phone = document.getElementById('lead-phone').value || 'Not provided';
   const r = lastResult;
-  const msg = `Hi NutriExperts, I just used the BMI/calorie calculator.\n\nName: ${name}\nPhone: ${phone}\nAge: ${r.age} | Sex: ${r.sex}\nGoal: ${r.goal}\nBMI: ${r.bmiRounded} (${r.bmiCategory})\nEstimated calories/day: ${r.tdee}\nProtein: ${r.protein}g | Carbs: ${r.carbs}g | Fat: ${r.fat}g\n\nI'd like a dietitian to review this.`;
-  const url = 'https://wa.me/919122770481?text=' + encodeURIComponent(msg);
-  window.open(url, '_blank');
+  const msg = `Hi NutriExperts, I just used the BMI/calorie calculator.\n\n`
+    + `Name: ${name}\nPhone: ${phone}\n`
+    + `Age: ${r.age} | Sex: ${r.sex}\n`
+    + `Height: ${r.heightEntered} ${r.heightUnit}\n`
+    + `Weight: ${r.weightEntered} ${r.weightUnit}\n`
+    + `Activity level: ${r.activityLabel}\n`
+    + `Goal: ${r.goal}\n`
+    + `BMI: ${r.bmiRounded} (${r.bmiCategory})\n`
+    + `Estimated calories/day: ${r.tdee}\n`
+    + `Protein: ${r.protein}g | Carbs: ${r.carbs}g | Fat: ${r.fat}g\n\n`
+    + `I'd like a dietitian to review this.`;
+  openWhatsApp('919122770481', msg);
 }
 </script>
 

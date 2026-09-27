@@ -127,11 +127,28 @@ header.site {
   z-index: 40;
 }
 
+/*
+  ===== HEADER HEIGHT — kept fixed on purpose =====
+  The nav bar has a fixed height (--nav-height) instead of sizing itself
+  around its content. This means the logo below can be made larger or
+  smaller without ever changing the height of the header/nav bar itself.
+  If you increase --logo-height a lot, keep it a bit smaller than
+  --nav-height so it doesn't visually poke out of the header.
+*/
+:root {
+  --nav-height: 96px;         /* fixed header height on desktop/tablet */
+  --nav-height-mobile: 76px;  /* fixed header height on phones */
+  --logo-height: 72px;         /* logo height on desktop/tablet */
+  --logo-height-mobile: 52px;  /* logo height on phones (below 760px wide) */
+  --logo-max-width: 240px;     /* logo will never grow wider than this */
+}
+
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 32px;
+  height: var(--nav-height);
+  padding: 0 32px;
   max-width: 1140px;
   margin: 0 auto;
 }
@@ -778,6 +795,14 @@ section.tight { padding: 64px 0; }
 }
 .lead-capture p.hint { font-size: 0.85rem; color: var(--ink-soft); margin-bottom: 14px; }
 
+.or-divider {
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin: 14px 0;
+}
+
 /* ---------- Added: placeholder boxes for real photos/QR (see HTML comments) ---------- */
 .placeholder-box {
   display: flex;
@@ -804,6 +829,66 @@ section.tight { padding: 64px 0; }
 .dietitian-photo-wrap { aspect-ratio: 4/5; width: 100%; border-radius: 3px; overflow: hidden; }
 .dietitian-photo-wrap img { width: 100%; height: 100%; object-fit: cover; }
 
+/* ---------- Added: multiple dietitian profiles ---------- */
+.dietitian-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 44px;
+}
+.dietitian-card .dietitian-photo-wrap { max-width: 220px; }
+.dietitian-card h3 { margin-top: 18px; margin-bottom: 2px; }
+.dietitian-role { color: var(--paprika); font-weight: 600; margin: 0 0 10px; font-size: 0.95rem; }
+.dietitian-card p:not(.dietitian-role) { font-size: 0.94rem; color: var(--ink-soft); }
+@media (max-width: 760px) {
+  .dietitian-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+
+/* ---------- Added: before/after client results ---------- */
+.transform-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 44px;
+}
+.transform-images {
+  display: flex;
+  gap: 2px;
+  aspect-ratio: 3/2;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.transform-images .ta-img { flex: 1; position: relative; }
+.transform-images .ta-img img { width: 100%; height: 100%; object-fit: cover; }
+.transform-images .ta-img .placeholder-box { border-radius: 0; }
+.ta-label {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(20,38,29,0.78);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 12px;
+  z-index: 2;
+}
+.transform-meta { margin-top: 16px; }
+.transform-meta h3 { font-size: 1.05rem; margin-bottom: 4px; }
+.transform-meta .result {
+  font-family: var(--serif);
+  color: var(--paprika);
+  font-size: 0.98rem;
+  margin: 0 0 6px;
+}
+.transform-meta p.note { font-size: 0.86rem; color: var(--ink-soft); margin: 0; }
+
+@media (max-width: 860px) { .transform-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .transform-grid { grid-template-columns: 1fr; } }
+
 .food-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -821,18 +906,6 @@ section.tight { padding: 64px 0; }
 .qr-upi-id { font-family: var(--sans); font-weight: 600; color: var(--forest-deep); font-size: 0.95rem; }
 
 /* ---------- Added: nav logo image (replaces the former text wordmark) ---------- */
-/*
-  ===== LOGO SIZE — EASY TO ADJUST =====
-  Change the numbers below to resize your logo. Nothing else about the
-  header/nav (spacing, colors, alignment of other nav items) is affected
-  by these — they only control the logo image's own size.
-*/
-:root {
-  --logo-height: 48px;         /* logo height on desktop/tablet */
-  --logo-height-mobile: 38px;  /* logo height on phones (below 760px wide) */
-  --logo-max-width: 220px;     /* logo will never grow wider than this */
-}
-
 .logo { display: flex; align-items: center; }
 .logo-img {
   height: var(--logo-height);
@@ -856,6 +929,7 @@ section.tight { padding: 64px 0; }
 .placeholder-box.ph-logo .ph-sub { display: none; }
 
 @media (max-width: 760px) {
+  .nav { height: var(--nav-height-mobile); }
   .logo-img { height: var(--logo-height-mobile); max-width: 150px; }
   .placeholder-box.ph-logo { height: var(--logo-height-mobile); min-width: 130px; font-size: 0.68rem; }
 }
